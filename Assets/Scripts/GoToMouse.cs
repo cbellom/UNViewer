@@ -15,7 +15,7 @@ public class GoToMouse : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		position = Input.mousePosition;
-		position.z = 10;
+		position.z = 0;
 		Camera.main.ScreenToWorldPoint (position);
 
 		transform.position = Vector3.Lerp (transform.position, position, speed * Time.deltaTime);
