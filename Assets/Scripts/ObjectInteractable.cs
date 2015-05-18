@@ -22,7 +22,6 @@ public class ObjectInteractable : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		elapsedTime = 0;
 		isTriggerActivate = false;
-		Debug.Log("Go hola");
 	}
 	
 	void OnTriggerStay2D(Collider2D other) {

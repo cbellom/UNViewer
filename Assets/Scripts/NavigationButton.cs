@@ -4,28 +4,35 @@ using System.Collections;
 
 public class NavigationButton : ObjectInteractable {
 	public MoveMap moveMap;
+	public DirectionState directionState;
 
 	void Awake(){
 		ObjectSelected = HandleObjectSelected;
+		ObjectExited = HandleObjectExited;
 	}
 
 	private void HandleObjectSelected(){
-		position = Input.mousePosition;
-		Camera.main.ScreenToWorldPoint (position);
-		Vector2 mousePosition = new Vector2 (position.x, position.y);
-		mScrollRect.normalizedPosition = Vector2.Lerp( mScrollRect.normalizedPosition, mousePosition, speed * Time.deltaTime );
+		moveMap.canMoveMap = true;
+		ChangeDeltaMove ();
+		elapsedTime = timeToTriggerAction - 0.05f;
+		isTriggerActivate = false;
 	}
 
-	private Vector3 GetDifferenceDirection(){
-		if (directionState == DirectionState.Up)
-			return new Vector3 (0, -deltaMovementScroll, 0);
-		if (directionState == DirectionState.Down)
-			return new Vector3 (0, deltaMovementScroll, 0);
-		if (directionState == DirectionState.Rigth)
-			return new Vector3 (-deltaMovementScroll, 0, 0);
-		if (directionState == DirectionState.Left)
-			return new Vector3 (deltaMovementScroll, 0, 0);
+	void HandleObjectExited ()	{
+		moveMap.canMoveMap = false;
+		moveMap.wayToMoveY = 0;
+		moveMap.wayToMoveX = 0;
+	}
 
-		return new Vector3 (0, 0, 0);
+	private void ChangeDeltaMove(){
+		if (directionState == DirectionState.Up) {
+			moveMap.wayToMoveY = -1;
+		}else if (directionState == DirectionState.Down) {
+			moveMap.wayToMoveY = 1;
+		}else if (directionState == DirectionState.Rigth){
+			moveMap.wayToMoveX = -1;
+		}else if (directionState == DirectionState.Left) {
+			moveMap.wayToMoveX = 1;
+		}
 	}
 }
