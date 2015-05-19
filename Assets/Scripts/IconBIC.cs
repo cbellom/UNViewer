@@ -29,7 +29,7 @@ public class IconBIC : ObjectInteractable {
 	
 	
 	private void SetPrefabInformation(){
-		Text titleText = GetChildOfPrefabByName ("PanelTitle").gameObject.transform.FindChild("Title").GetComponent<Text> () as Text;
+		Text titleText = GetChildOfPrefabByName ("Title").GetComponent<Text> () as Text;
 		titleText.text = information.title;
 		
 		CreateDataList (information.dataList);
