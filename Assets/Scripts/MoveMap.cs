@@ -11,6 +11,8 @@ public class MoveMap : MonoBehaviour {
 	public float wayToMoveX;
 	public float wayToMoveY;
 	public bool canMoveMap;
+	public GameObject navigationArea;
+
 	// Use this for initialization
 	void Start () {
 		start = transform.position;
@@ -19,6 +21,8 @@ public class MoveMap : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (navigationArea.activeSelf == false)
+			canMoveMap = false;
 		if (canMoveMap) {
 			position = transform.position;
 			position.x += wayToMoveX;
