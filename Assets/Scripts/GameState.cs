@@ -3,5 +3,6 @@ using System.Collections;
 
 public enum GameState {
 	Menu,
-	Main
+	Main,
+	Celebrities
 }
