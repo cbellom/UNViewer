@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Icon : ObjectInteractable {
+public class IconNP : ObjectInteractable {
 	public GameObject informationView;
 	public Information information;
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InformationBehavior : ObjectInteractable {
+public class InformationBehaviour : ObjectInteractable {
 	
 	void Awake(){
 		ObjectExited = HandledObjectExited;
