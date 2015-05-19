@@ -25,9 +25,7 @@ public class Icon : ObjectInteractable {
 		if (informationAnimator != null)
 			informationAnimator.PopUpOpen ();
 	}
-	
-	private void SetPrefabLocation(){
-	}
+
 	
 	private void SetPrefabInformation(){
 		Text preTitleText = GetChildOfPrefabByName ("PreTitle").GetComponent<Text> () as Text;
