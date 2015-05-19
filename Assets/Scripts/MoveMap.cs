@@ -29,7 +29,7 @@ public class MoveMap : MonoBehaviour {
 			transform.position = Vector3.Lerp (transform.position, position, speed * Time.deltaTime);
 			if(wayToMoveX != 0){
 				float delta = (wayToMoveX > 0) ? deltaMove:-deltaMove;
-				deltaToMoveX = wayToMoveX + deltaMove;
+				deltaToMoveX = wayToMoveX + delta;
 			}if(wayToMoveY != 0){
 				float delta = (wayToMoveY > 0) ? deltaMove:-deltaMove;
 				deltaToMoveY = wayToMoveY + delta;
