@@ -49,7 +49,7 @@ public class IconBIC : ObjectInteractable {
 		foreach (Data data in dataList) {
 			GameObject newItem = Instantiate(dataPrefab) as GameObject;
 			newItem.transform.SetParent(this.dataList.gameObject.transform, false);
-			newItem.GetComponent<Text>().text = "<color=#6fa15c>"+ data.type+"</color> <color=#000000>"+data.value+"</color>";
+			newItem.GetComponent<Text>().text = "<color=#427c2c>"+ data.type+"</color> <color=#000000>"+data.value+"</color>";
 		}
 	}
 	
