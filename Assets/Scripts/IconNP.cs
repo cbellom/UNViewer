@@ -9,7 +9,7 @@ public class IconNP : ObjectInteractable {
 
 	public GameObject dataList;
 	public GameObject dataPrefab;
-	
+
 	void Awake(){
 		ObjectSelected = HanldeObjectSelected;
 	}

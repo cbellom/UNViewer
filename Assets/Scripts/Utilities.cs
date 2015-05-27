@@ -4,7 +4,7 @@ using System.Collections;
 public class Utilities : MonoBehaviour {
 	public GameObject menuView;
 	public GameObject mainView;
-	public GameObject celebritiesView;
+	public GameObject creditView;
 	public GameState gameState;
 
 	void Start () {
@@ -17,17 +17,17 @@ public class Utilities : MonoBehaviour {
 		}
 
 		if (gameState == GameState.Main) {
-			celebritiesView.SetActive(false);
+			creditView.SetActive(false);
 			mainView.SetActive (true);
 			StartCoroutine (CloseView (menuView));
 		} else if (gameState == GameState.Menu) {
-			celebritiesView.SetActive(false);
+			creditView.SetActive(false);
 			mainView.SetActive (false);
 			menuView.SetActive (true);
-		} else if (gameState == GameState.Celebrities) {
+		} else if (gameState == GameState.Credits) {
 			mainView.SetActive (false);
 			menuView.SetActive (false);
-			celebritiesView.SetActive(true);
+			creditView.SetActive(true);
 		}
 	}
 
