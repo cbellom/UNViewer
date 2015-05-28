@@ -19,6 +19,7 @@ public class ObjectInteractable : MonoBehaviour {
 	public Sprite imageIconOnFocus;
 	public Sprite imageIconVisited;
 
+	public CountVisits counter;
 	private bool isVisited;
 
 	void Start(){
@@ -39,7 +40,11 @@ public class ObjectInteractable : MonoBehaviour {
 			elapsedTime += Time.deltaTime;
 			if (elapsedTime >= timeToTriggerAction) {
 				isTriggerActivate = true;
-				isVisited = true;
+				if(!isVisited){
+					isVisited = true;
+					if(counter != null)
+						counter.IncreaseCount();
+				}
 				SetImageIcon (imageIconVisited);
 				if(ObjectSelected != null)
 					ObjectSelected();
