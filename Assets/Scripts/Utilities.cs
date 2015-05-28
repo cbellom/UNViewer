@@ -32,7 +32,7 @@ public class Utilities : MonoBehaviour {
 	}
 
 	private IEnumerator CloseView(GameObject view){
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(1f);
 		view.SetActive (false);
 	}
 }
