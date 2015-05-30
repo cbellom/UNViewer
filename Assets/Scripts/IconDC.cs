@@ -25,7 +25,7 @@ public class IconDC : ObjectInteractable {
 	
 	
 	private void SetPrefabInformation(){
-		Text titleText = GetChildOfPrefabByName ("Title").GetComponent<Text> () as Text;
+		Text titleText = GetChildOfPrefabByName ("Description").GetComponent<Text> () as Text;
 		titleText.text = information.title;
 	}
 	
