@@ -5,10 +5,11 @@ public class Utilities : MonoBehaviour {
 	public GameObject menuView;
 	public GameObject mainView;
 	public GameObject creditView;
+	public GameObject loadingView;
 	public GameState gameState;
 
 	void Start () {
-		Screen.showCursor = false;
+		Cursor.visible = false;
 	}
 	
 	void Update () {
@@ -22,7 +23,7 @@ public class Utilities : MonoBehaviour {
 			StartCoroutine (CloseView (menuView));
 		} else if (gameState == GameState.Menu) {
 			creditView.SetActive(false);
-			mainView.SetActive (false);
+			StartCoroutine (CloseView (mainView));
 			menuView.SetActive (true);
 		} else if (gameState == GameState.Credits) {
 			mainView.SetActive (false);
