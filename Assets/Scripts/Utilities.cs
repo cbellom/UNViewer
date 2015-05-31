@@ -7,9 +7,12 @@ public class Utilities : MonoBehaviour {
 	public GameObject creditView;
 	public GameObject loadingView;
 	public GameState gameState;
+	private GameState currentState;
 
 	void Start () {
 		Cursor.visible = false;
+		currentState = gameState;
+		StartCoroutine (CloseView (loadingView, 0.5f));
 	}
 	
 	void Update () {
@@ -17,23 +20,33 @@ public class Utilities : MonoBehaviour {
 			Application.Quit();
 		}
 
+		if (currentState != gameState) {
+			loadingView.SetActive(true);
+			if (gameState == GameState.Main) {
+				creditView.SetActive(false);
+				StartCoroutine (CloseView (menuView, 1f));
+			} else if (gameState == GameState.Menu) {
+				mainView.SetActive (false);
+				creditView.SetActive(false);
+			} else if (gameState == GameState.Credits) {
+				mainView.SetActive (false);
+				menuView.SetActive (false);
+			}
+			StartCoroutine (CloseView (loadingView, 0.5f));
+			currentState = gameState;
+		}
+
 		if (gameState == GameState.Main) {
-			creditView.SetActive(false);
 			mainView.SetActive (true);
-			StartCoroutine (CloseView (menuView));
 		} else if (gameState == GameState.Menu) {
-			creditView.SetActive(false);
-			StartCoroutine (CloseView (mainView));
 			menuView.SetActive (true);
 		} else if (gameState == GameState.Credits) {
-			mainView.SetActive (false);
-			menuView.SetActive (false);
 			creditView.SetActive(true);
 		}
 	}
 
-	private IEnumerator CloseView(GameObject view){
-		yield return new WaitForSeconds(1f);
+	private IEnumerator CloseView(GameObject view, float time){
+		yield return new WaitForSeconds(time);
 		view.SetActive (false);
 	}
 }
