@@ -24,7 +24,7 @@ public class Utilities : MonoBehaviour {
 			loadingView.SetActive(true);
 			if (gameState == GameState.Main) {
 				creditView.SetActive(false);
-				StartCoroutine (CloseView (menuView, 1f));
+				menuView.SetActive (false);
 			} else if (gameState == GameState.Menu) {
 				mainView.SetActive (false);
 				creditView.SetActive(false);
