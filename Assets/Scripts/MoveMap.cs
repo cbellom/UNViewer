@@ -25,12 +25,12 @@ public class MoveMap : MonoBehaviour {
 			canMoveMap = false;
 		if (canMoveMap) {
 			position = transform.position;
-			position.x += wayToMoveX;
-			position.y += wayToMoveY;
+			position.x += wayToMoveX*deltaMove;
+			position.y += wayToMoveY*deltaMove;
 			position.z = 0;
 			Camera.main.ScreenToWorldPoint (position);
 			
-			transform.position = Vector3.Lerp (transform.position, position, speed * Time.deltaTime);
+			transform.position = Vector3.Lerp (transform.position, position,2* speed * Time.deltaTime);
 			if(wayToMoveX != 0){
 				float delta = (wayToMoveX > 0) ? deltaMove:-deltaMove;
 				deltaToMoveX = wayToMoveX + delta;
