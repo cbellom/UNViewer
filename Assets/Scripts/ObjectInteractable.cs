@@ -22,6 +22,9 @@ public class ObjectInteractable : MonoBehaviour {
 	public CountVisits counter;
 	private bool isVisited;
 
+	public AudioClip audioClip;
+	public AudioSource audioSource;
+
 	void Start(){
 		sight = GameObject.Find("Sight");
 		canTriggerExit = true;
@@ -39,6 +42,7 @@ public class ObjectInteractable : MonoBehaviour {
 		if (!isTriggerActivate) {
 			elapsedTime += Time.deltaTime;
 			if (elapsedTime >= timeToTriggerAction) {
+				PlayClickAudio();
 				isTriggerActivate = true;
 				if(!isVisited){
 					isVisited = true;
@@ -76,4 +80,10 @@ public class ObjectInteractable : MonoBehaviour {
 			gameObject.GetComponent<Image> ().sprite = image;
 	}
 
+	private void PlayClickAudio(){
+		if (audioSource != null && audioClip != null) {
+			audioSource.clip = audioClip;
+			audioSource.Play();
+		}
+	}
 }
